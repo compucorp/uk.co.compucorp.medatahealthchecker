@@ -449,5 +449,11 @@ function _medatahealthchecker_civix_civicrm_alterSettingsFolders(&$metaDataFolde
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_entityTypes
  */
 function _medatahealthchecker_civix_civicrm_entityTypes(&$entityTypes) {
-  $entityTypes = array_merge($entityTypes, []);
+  $entityTypes = array_merge($entityTypes, [
+    'CRM_Medatahealthchecker_DAO_IssuesLog' => [
+      'name' => 'IssuesLog',
+      'class' => 'CRM_Medatahealthchecker_DAO_IssuesLog',
+      'table' => 'medatahealthchecker_issues_log',
+    ],
+  ]);
 }
