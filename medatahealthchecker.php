@@ -142,3 +142,19 @@ function medatahealthchecker_civicrm_entityTypes(&$entityTypes) {
 function medatahealthchecker_civicrm_themes(&$themes) {
   _medatahealthchecker_civix_civicrm_themes($themes);
 }
+
+/**
+ * Implements hook_civicrm_navigationMenu().
+ */
+function medatahealthchecker_civicrm_navigationMenu(&$menu) {
+  $issuesDashboardMenuItem = [
+    'name' => 'medatahealthchecker_issues_dashboard',
+    'label' => ts('Data Health Checker Dashboard'),
+    'url' => 'civicrm/medatahealthchecker/issues-dashboard',
+    'permission' => 'administer CiviCRM,administer MembershipExtras',
+    'operator' => 'OR',
+    'separator' => 1,
+  ];
+
+  _medatahealthchecker_civix_insert_navigation_menu($menu, 'Administer/CiviContribute', $issuesDashboardMenuItem);
+}
