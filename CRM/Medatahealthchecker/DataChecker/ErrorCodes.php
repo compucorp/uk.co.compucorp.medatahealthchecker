@@ -28,11 +28,11 @@ class CRM_Medatahealthchecker_DataChecker_ErrorCodes {
     return [
       self::DD_PAYMENT_METHOD_WITH_NO_PAYMENT_PLAN => 'Contributions paid with Direct Debit but with no related Payment Plan',
       self::MISSING_FINANCIAL_TRANSACTION_RECORDS_ON_CONTRIBUTION => 'Missing financial transaction records on contributions',
-      self::MISSING_LINE_ITEMS_ON_CONTRIBUTION => ' Missing line items on contributions',
+      self::MISSING_LINE_ITEMS_ON_CONTRIBUTION => 'Missing line items on contributions',
       self::MISSING_FINANCIAL_ITEM_RECORDS_ON_LINE_ITEM => 'Missing financial items on line items',
       self::CONTRIBUTIONS_WITH_MISMATCHED_LINE_ITEMS_AMOUNT => 'Contributions with mismatched line items amount',
       self::CONTRIBUTIONS_WITH_MISMATCHED_LINE_ITEMS_TAX => 'Contributions with mismatched line items tax amount',
-      self::OFFLINE_PAYMENT_PLANS_WITH_NO_MEMBERSHIPS => ' Offline payment plans but with no related memberships',
+      self::OFFLINE_PAYMENT_PLANS_WITH_NO_MEMBERSHIPS => 'Offline payment plans but with no related memberships',
       self::OFFLINE_PAYMENT_PLANS_WITH_AUTORENEW_FLAG_FALSE => 'Offline payment plans but with auto-renew flag set to False',
       self::OFFLINE_PAYMENT_PLANS_WITH_NO_SUBSCRIPTION_LINE_ITEMS => 'Offline payment plans but without any subscription line items',
       self::DIRECT_DEBIT_PAYMENT_PLANS_WITH_NO_MANDATES => 'Direct debit payment plans but with no related mandate',
