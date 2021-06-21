@@ -153,7 +153,7 @@ function medatahealthchecker_civicrm_navigationMenu(&$menu) {
     'url' => 'civicrm/medatahealthchecker/issues-dashboard',
     'permission' => 'administer CiviCRM,administer MembershipExtras',
     'operator' => 'OR',
-    'separator' => 1,
+    'separator' => 2,
   ];
 
   _medatahealthchecker_civix_insert_navigation_menu($menu, 'Administer/CiviContribute', $issuesDashboardMenuItem);
