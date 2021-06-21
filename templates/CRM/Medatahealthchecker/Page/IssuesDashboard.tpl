@@ -6,7 +6,7 @@
       <i class="crm-i fa-exclamation-triangle" aria-hidden="true"></i>
       [{$item.issues_count} record(s)] => {$item.description}
       <div class="css_right">
-        <a href="civicrm/medatahealthchecker/search-error?error_code={$item.error_code}">View all</a>
+        <a href="/civicrm/medatahealthchecker/search-error?error_code={$item.error_code}">Export Results</a>
       </div>
     </h3>
   </div>

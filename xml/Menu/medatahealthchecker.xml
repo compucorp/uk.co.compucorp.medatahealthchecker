@@ -6,4 +6,10 @@
     <title>ME Health Checker Issues Dashboard</title>
     <access_arguments>administer CiviCRM;administer MembershipExtras</access_arguments>
   </item>
+
+  <item>
+    <path>civicrm/medatahealthchecker/search-error</path>
+    <page_callback>CRM_Medatahealthchecker_Export_IssuesLog::export</page_callback>
+    <access_arguments>administer CiviCRM;administer MembershipExtras</access_arguments>
+  </item>
 </menu>
