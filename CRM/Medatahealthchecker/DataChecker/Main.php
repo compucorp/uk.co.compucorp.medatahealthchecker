@@ -195,4 +195,5 @@ class CRM_Medatahealthchecker_DataChecker_Main {
 
     return $ddPaymentProcessorId['values'][0]['id'];
   }
+
 }
