@@ -176,7 +176,7 @@ class CRM_Medatahealthchecker_DataChecker_Main {
       'name' => "direct_debit",
     ]);
     if (empty($ddPaymentMethodId['values'][0]['value'])) {
-      return NULL;
+      return 'NULL';
     }
 
     return $ddPaymentMethodId['values'][0]['value'];
@@ -190,7 +190,7 @@ class CRM_Medatahealthchecker_DataChecker_Main {
       'is_test' => 0,
     ]);
     if (empty($ddPaymentProcessorId['values'][0]['id'])) {
-      return NULL;
+      return 'NULL';
     }
 
     return $ddPaymentProcessorId['values'][0]['id'];
