@@ -24,6 +24,10 @@ class CRM_Medatahealthchecker_DataChecker_ErrorCodes {
 
   const DIRECT_DEBIT_CONTRIBUTIONS_WITH_NO_MANDATES = 1100;
 
+  const RECUR_CONTRIBUTION_WITH_INVALID_CYCLE_DAY = 1200;
+
+  const RECUR_CONTRIBUTION_WITH_INVALID_NEXT_CONTRIB_DATE = 1300;
+
   public static function getAllCodesWithDescription() {
     return [
       self::DD_PAYMENT_METHOD_WITH_NO_PAYMENT_PLAN => 'Contributions paid with Direct Debit but with no related Payment Plan',
@@ -37,6 +41,8 @@ class CRM_Medatahealthchecker_DataChecker_ErrorCodes {
       self::OFFLINE_PAYMENT_PLANS_WITH_NO_SUBSCRIPTION_LINE_ITEMS => 'Offline payment plans but without any subscription line items',
       self::DIRECT_DEBIT_PAYMENT_PLANS_WITH_NO_MANDATES => 'Direct debit payment plans but with no related mandate',
       self::DIRECT_DEBIT_CONTRIBUTIONS_WITH_NO_MANDATES => 'Direct debit contributions but with no related mandate',
+      self::RECUR_CONTRIBUTION_WITH_INVALID_CYCLE_DAY => 'Recurring contributions with invalid cycle day',
+      self::RECUR_CONTRIBUTION_WITH_INVALID_NEXT_CONTRIB_DATE => 'Recurring contributions with invalid next contribution date',
     ];
   }
 
