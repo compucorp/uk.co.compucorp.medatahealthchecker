@@ -18,6 +18,8 @@ class CRM_Medatahealthchecker_DataChecker_Main {
     $this->checkOfflinePaymentPlansWithNoSubscriptionLineItems();
     $this->checkDirectDebitPaymentPlansWithNoMandates();
     $this->checkDirectDebitContributionsWithNoMandates();
+    $this->checkRecurringContributionsWithInvalidCycleDay();
+    $this->checkRecurringContributionsWithInvalidNextContriburionDate();
   }
 
   private function emptyDataIssuesTable() {
@@ -165,6 +167,28 @@ class CRM_Medatahealthchecker_DataChecker_Main {
               LEFT JOIN civicrm_value_dd_information cc_mandate ON cc.id = cc_mandate.entity_id
               WHERE cc_mandate.mandate_id IS NULL AND cc.payment_instrument_id = {$ddPaymentMethod}
               GROUP BY cc.id";
+    CRM_Core_DAO::executeQuery($query);
+  }
+
+  private function checkRecurringContributionsWithInvalidCycleDay() {
+    $errorCode = ErrorCodes::RECUR_CONTRIBUTION_WITH_INVALID_CYCLE_DAY;
+
+    $query = "INSERT INTO medatahealthchecker_issues_log
+              (entity_id, entity_table, error_code, contact_id)
+              SELECT ccr.id, 'civicrm_contribution_recur', {$errorCode}, ccr.contact_id
+              FROM `civicrm_contribution_recur` ccr
+              WHERE frequency_unit = 'month' AND cycle_day > 28";
+    CRM_Core_DAO::executeQuery($query);
+  }
+
+  private function checkRecurringContributionsWithInvalidNextContriburionDate() {
+    $errorCode = ErrorCodes::RECUR_CONTRIBUTION_WITH_INVALID_NEXT_CONTRIB_DATE;
+
+    $query = "INSERT INTO medatahealthchecker_issues_log
+            (entity_id, entity_table, error_code, contact_id)
+            SELECT ccr.id, 'civicrm_contribution_recur', {$errorCode}, ccr.contact_id
+            FROM `civicrm_contribution_recur` ccr
+            WHERE frequency_unit = 'month' AND EXTRACT(DAY FROM ccr.next_sched_contribution_date) > 28";
     CRM_Core_DAO::executeQuery($query);
   }
 
