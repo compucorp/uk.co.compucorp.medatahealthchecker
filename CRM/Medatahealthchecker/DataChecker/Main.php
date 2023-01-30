@@ -6,8 +6,6 @@ class CRM_Medatahealthchecker_DataChecker_Main {
 
   public function validateData() {
     $this->emptyDataIssuesTable();
-
-    $this->checkContributionsPaidByDirectDebitButWithoutPaymentPlan();
     $this->checkMissingFinancialTransactionRecordsOnContributions();
     $this->checkMissingLineItemsOnContributions();
     $this->checkMissingFinancialItemRecordsOnLineItems();
@@ -16,10 +14,14 @@ class CRM_Medatahealthchecker_DataChecker_Main {
     $this->checkOfflinePaymentPlansWithNoRelatedMemberships();
     $this->checkOfflinePaymentPlansWithAutoRenewFlagNotTrue();
     $this->checkOfflinePaymentPlansWithNoSubscriptionLineItems();
-    $this->checkDirectDebitPaymentPlansWithNoMandates();
-    $this->checkDirectDebitContributionsWithNoMandates();
     $this->checkRecurringContributionsWithInvalidCycleDay();
     $this->checkRecurringContributionsWithInvalidNextContriburionDate();
+
+    if (CRM_Medatahealthchecker_Utils_ExtensionUtils::isExtensionEnabled('uk.co.compucorp.manualdirectdebit')) {
+      $this->checkContributionsPaidByDirectDebitButWithoutPaymentPlan();
+      $this->checkDirectDebitPaymentPlansWithNoMandates();
+      $this->checkDirectDebitContributionsWithNoMandates();
+    }
   }
 
   private function emptyDataIssuesTable() {
