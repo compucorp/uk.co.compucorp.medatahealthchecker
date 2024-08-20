@@ -1,6 +1,6 @@
 <?php
 
-class CRM_Medatahealthchecker_Upgrader extends CRM_Medatahealthchecker_Upgrader_Base {
+class CRM_Medatahealthchecker_Upgrader extends CRM_Extension_Upgrader_Base {
 
   public function postInstall() {
     $this->createHealthCheckerScheduledJob();
