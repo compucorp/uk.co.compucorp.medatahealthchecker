@@ -21,7 +21,7 @@ class CRM_Medatahealthchecker_Upgrader extends CRM_Extension_Upgrader_Base {
       'description' => ts('Perform data health checks on Membershipextras and CiviCRM financial data'),
       'api_entity' => 'MembershipextrasDataHealthChecker',
       'api_action' => 'run',
-      'is_active' => 1,
+      'is_active' => 0,
     ]);
   }
 
@@ -49,6 +49,17 @@ class CRM_Medatahealthchecker_Upgrader extends CRM_Extension_Upgrader_Base {
       'name' => 'Membershipextras - data health checker',
       'api.Job.create' => ['id' => '$value.id', 'is_active' => $newStatus],
     ]);
+  }
+
+  /**
+   * Disables scheduled job.
+   *
+   * @return boolean
+   */
+  public function upgrade_0001(): bool {
+    $this->toggleHealthCheckerScheduledJob(FALSE);
+
+    return TRUE;
   }
 
 }
